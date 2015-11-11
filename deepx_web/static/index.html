@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app='deepx'>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="/js/hover/css/hover.css" rel="stylesheet">
+    <script src="/js/angular/angular.min.js"></script>
+    <script src="/js/angular-route/angular-route.min.js"></script>
+    <script src="/js/angular-animate/angular-animate.min.js"></script>
+    <script src="/js/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="/js/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/js/deepx.js"></script>
+
+    <title>DeepX: The next generation of deep learning</title>
+
+
+    <link href="/css/main.css" rel="stylesheet">
+  </head>
+
+  <body role="document">
+      <div class='theme-showcase'>
+        <div class='carousel-wrapper' ng-controller='HomeCarouselController'>
+                <div class='carousel-title'>
+                  <div class='deepx-title'>DeepX</div>
+                  <h3 class='deepx-subtitle'>Enter the tensor</h3>
+                </div>
+            <uib-carousel interval="interval" no-wrap="noWrapSlides">
+              <uib-slide ng-repeat="slide in slides" active="slide.active">
+                <img class='carousel' ng-src="{{slide.image}}" style="margin:auto;">
+                <!--<div class="carousel-caption">-->
+                  <!--<h4>{{slide.text}}</h4>-->
+                <!--</div>-->
+              </uib-slide>
+            </uib-carousel>
+        </div>
+      </div>
+    <div class="container" role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <!--<div class="jumbotron">-->
+        <!--<h1>DeepX</h1>-->
+        <!--<p>The next generation of deep learning</p>-->
+      <!--</div>-->
+      <!--<div ui-view></div>-->
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link href="/js/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/js/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
+  </body>
+</html>
+
