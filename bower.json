@@ -1,0 +1,29 @@
+{
+  "name": "beermind",
+  "authors": [
+    "Sharad Vikram <sharad.vikram@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "deepx_web/static/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-ui-bootstrap": "~0.14.3",
+    "hover": "~2.0.2",
+    "angular-animate": "~1.4.7",
+    "angular-route": "~1.4.7",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.5",
+    "angular-bootstrap": "~0.14.3"
+  }
+}
