@@ -1,0 +1,16 @@
+<div class='theme-showcase'>
+  <div class='carousel-wrapper' ng-controller='HomeCarouselController'>
+          <div class='carousel-title'>
+            <div class='deepx-title'>DeepX</div>
+            <h3 class='deepx-subtitle'>Enter the tensor</h3>
+          </div>
+      <uib-carousel interval="interval" no-wrap="noWrapSlides">
+        <uib-slide ng-repeat="slide in slides" active="slide.active">
+          <img class='carousel' ng-src="{{slide.image}}" style="margin:auto;">
+          <!--<div class="carousel-caption">-->
+            <!--<h4>{{slide.text}}</h4>-->
+          <!--</div>-->
+        </uib-slide>
+      </uib-carousel>
+  </div>
+</div>

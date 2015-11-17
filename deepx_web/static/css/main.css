@@ -1,7 +1,7 @@
-body {
-  height: 100vh;
-  /*padding-top: 20px;*/
-  /*padding-bottom: 30px;*/
+html, body { height: 100%; width: 100%; margin: 0;  }.
+
+.height-max {
+  height: 100%;
 }
 
 .theme-dropdown .dropdown-menu {
@@ -81,4 +81,39 @@ body {
   padding-bottom: 20px;
   color: #fff;
   text-align: center;
+}
+
+.navbar-brand {
+   font-size: 24px !important;
+}
+
+.navbar-inverse {
+  border-radius: 0px !important;
+}
+
+.deepx-font {
+  font-family: "Maven Pro";
+}
+
+.home-body {
+  background-image: url(/img/space.jpg);
+  background-size: cover;
+  height: 100%;
+  background-position: bottom;
+}
+
+.home-container {
+}
+.home-content {
+  padding: 10px 10px 10px 10px;
+  background-color:rgba(0, 0, 0, 0.8);
+  font-size: 18px;
+  margin-top: 30px;
+  color: white;
+  font-family: "Maven Pro";
+  opacity: 0.8;
+}
+.home-banner {
+   text-align: center;
+   font-size: 80px;
 }

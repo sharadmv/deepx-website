@@ -16,6 +16,8 @@
     <script src="/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="/js/deepx.js"></script>
+    <script src="/js/controllers.js"></script>
+    <script src="/js/routes.js"></script>
 
     <title>DeepX: The next generation of deep learning</title>
 
@@ -24,33 +26,7 @@
   </head>
 
   <body role="document">
-      <div class='theme-showcase'>
-        <div class='carousel-wrapper' ng-controller='HomeCarouselController'>
-                <div class='carousel-title'>
-                  <div class='deepx-title'>DeepX</div>
-                  <h3 class='deepx-subtitle'>Enter the tensor</h3>
-                </div>
-            <uib-carousel interval="interval" no-wrap="noWrapSlides">
-              <uib-slide ng-repeat="slide in slides" active="slide.active">
-                <img class='carousel' ng-src="{{slide.image}}" style="margin:auto;">
-                <!--<div class="carousel-caption">-->
-                  <!--<h4>{{slide.text}}</h4>-->
-                <!--</div>-->
-              </uib-slide>
-            </uib-carousel>
-        </div>
-      </div>
-    <div class="container" role="main">
-
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-      <!--<div class="jumbotron">-->
-        <!--<h1>DeepX</h1>-->
-        <!--<p>The next generation of deep learning</p>-->
-      <!--</div>-->
-      <!--<div ui-view></div>-->
-
-    </div> <!-- /container -->
-
+    <div ui-view style='height: 100%'></div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
