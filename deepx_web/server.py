@@ -46,12 +46,14 @@ class Server(object):
         @jsonp
         @self.app.route('/api/beermind/generate_rating')
         @use_args({
-            'rating': fields.Float(required=True,
-                                   validate=lambda val: val >= 0.0 and val <= 10.0),
+            'rating': fields.Float(required=True),
             'temperature': fields.Float(missing=0.5),
         })
         def generate_rating(args):
-            results = self.beermind.generate_rating(args['rating'], 2000, temperature=args['temperature'])
+            rating = args['rating']
+            rating = max(rating, 0)
+            rating = min(rating, 10)
+            results = self.beermind.generate_rating(rating, 2000, temperature=args['temperature'])
             results = results.split("<EOS>")[0]
             return jsonify({
                 'results': results

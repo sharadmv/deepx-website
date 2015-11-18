@@ -31,8 +31,8 @@ html, body { height: 100%; width: 100%; margin: 0;  }.
   border-radius: 10px;
 }
 .deepx-project-container {
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
 }
 
 .deepx-project-background {
@@ -40,20 +40,20 @@ html, body { height: 100%; width: 100%; margin: 0;  }.
   filter: blur(3px);
   -webkit-filter: blur(2px); 
   height: 100%;
-  width: 200px;
+  width: 150px;
   z-index: -1;
 }
 
 .deepx-project-title {
   top: 0px;
-  width: 200px;
+  width: 150px;
   text-align: center;
   position: absolute;
   font-family: "Maven Pro";
   text-align: center;
   font-size: 30px;
   color: white;
-  line-height: 200px;
+  line-height: 150px;
 }
 
 .deepx-project-title:hover {
@@ -142,4 +142,20 @@ html, body { height: 100%; width: 100%; margin: 0;  }.
 
 .generate-button {
    width: 100%;
+}
+
+.paper-container {
+  background-color: #4C4C4C;
+  padding: 5px;
+  margin-bottom: 5px;
+  font-size: 14px;
+
+}
+
+a {
+  color: rgb(91, 205, 243) !important
+}
+
+a:hover {
+  color: rgb(91, 205, 243) !important
 }

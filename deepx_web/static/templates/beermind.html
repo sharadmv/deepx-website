@@ -10,8 +10,8 @@
         <div class='col-md-offset-1 col-md-4 col-xs-12'>
           <div class="form-horizontal">
             <div class="form-group">
-              <label for="inputEmail3" class="col-sm-4 control-label">Category</label>
-              <div class="col-md-8">
+              <label for="inputEmail3" class="col-sm-5 control-label">Category</label>
+              <div class="col-md-7">
                 <select class='form-control' ng-model='data.category'>
                   <option>Fruit / Vegetable Beer</option>
                   <option>American IPA</option>
@@ -22,13 +22,13 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="inputEmail3" class="col-sm-4 control-label">Temperature</label>
-              <div class="col-md-8">
+              <label for="inputEmail3" class="col-sm-5 control-label">Temperature</label>
+              <div class="col-md-7">
                 <input type="text" class="form-control" ng-model="data.categoryTemperature" placeholder="Temperature">
               </div>
             </div>
             <div class="form-group">
-              <div class="col-md-offset-4 col-md-8">
+              <div class="col-md-offset-5 col-md-7">
                 <button type='button' class='generate-button btn btn-lg btn-primary' ng-click="generateCategory()">Generate</button>
               </div>
             </div>
@@ -37,19 +37,19 @@
         <div class='col-md-offset-1 col-md-4 col-xs-12'>
           <div class="form-horizontal">
             <div class="form-group">
-              <label for="inputEmail3" class="col-sm-4 control-label">Rating</label>
-              <div class="col-md-8">
+              <label for="inputEmail3" class="col-sm-5 control-label">Rating (0-10)</label>
+              <div class="col-md-7">
                 <input type="text" class="form-control" ng-model="data.rating" placeholder="Rating">
               </div>
             </div>
             <div class="form-group">
-              <label for="inputEmail3" class="col-sm-4 control-label">Temperature</label>
-              <div class="col-md-8">
+              <label for="inputEmail3" class="col-sm-5 control-label">Temperature</label>
+              <div class="col-md-7">
                 <input type="text" class="form-control" ng-model="data.ratingTemperature" placeholder="Temperature">
               </div>
             </div>
             <div class="form-group">
-              <div class="col-md-offset-4 col-md-8">
+              <div class="col-md-offset-5 col-md-7">
                 <button type='button' class='generate-button btn btn-lg btn-primary' ng-click="generateRating()">Generate</button>
               </div>
             </div>
@@ -59,6 +59,13 @@
       <div class='row'>
         <div class='review-text-container col-md-offset-2 col-md-8'>
           <span class='review-text' ng-bind='reviewText'>
+          </span>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-md-12 projects'>
+          <span>
+            Want to learn how this works? <a href='http://arxiv.org/abs/1511.03677'>Read the paper!</a>
           </span>
         </div>
       </div>

@@ -67,9 +67,27 @@ app.controller('PapersController', function ($scope, $window) {
 });
 
 app.controller('HomeController', function($scope, $window) {
-  $scope.beermind = {
-    name: "BEERMIND",
-    href: "home.beermind",
-    backgroundImage: "/img/beer.jpg"
-  }
+  $scope.projects = [
+    {
+      name: "BEERMIND",
+      href: "home.beermind",
+      backgroundImage: "/img/beer.jpg"
+    },
+  ];
+
+
+  $scope.papers = [
+    {
+        name: 'Capturing Meaning in Product Reviews with Character-Level Generative Models',
+        link: 'http://arxiv.org/abs/1511.03683',
+        authors: 'Zachary C. Lipton, Sharad Vikram, Julian McAuley',
+        other: 'Submitted to ICLR 2016 (arXiv 2015)',
+    },
+    {
+        name: 'Learning to Diagnose with LSTM Recurrent Neural Networks',
+        link: 'http://arxiv.org/abs/1511.03677',
+        authors: 'Zachary C. Lipton, David C. Kale, Charles Elkan, Randall Wetzell',
+        other: 'Submitted to ICLR 2016 (arXiv 2015)',
+    }
+  ]
 });

@@ -2,7 +2,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/home/main");
   $stateProvider.
     state('splash', {
-      url: "/",
+      url: "/splash",
       templateUrl: '/templates/splash.html',
       controller: 'SplashController'
     }).
