@@ -4,6 +4,10 @@ html, body { height: 100%; width: 100%; margin: 0;  }.
   height: 100%;
 }
 
+.projects {
+  text-align: center;
+}
+
 .theme-dropdown .dropdown-menu {
   position: static;
   display: block;
@@ -45,7 +49,7 @@ html, body { height: 100%; width: 100%; margin: 0;  }.
   width: 200px;
   text-align: center;
   position: absolute;
-  font-family: "Merriweather";
+  font-family: "Maven Pro";
   text-align: center;
   font-size: 30px;
   color: white;

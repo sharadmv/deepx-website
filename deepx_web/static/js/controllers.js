@@ -68,7 +68,7 @@ app.controller('PapersController', function ($scope, $window) {
 
 app.controller('HomeController', function($scope, $window) {
   $scope.beermind = {
-    name: "BeerMind",
+    name: "BEERMIND",
     href: "home.beermind",
     backgroundImage: "/img/beer.jpg"
   }

@@ -1,6 +1,6 @@
 from path import Path
 from util import jsonp
-from flask import Flask, jsonify
+from flask import Flask, jsonify, redirect
 from beermind import Beermind
 from webargs import fields
 from webargs.flaskparser import use_args
@@ -33,6 +33,10 @@ class Server(object):
         @self.app.route('/')
         def index():
             return self.app.send_static_file('index.html')
+
+        @self.app.route('/beermind')
+        def beermind():
+            return redirect('/#/home/beermind')
 
     def initialize_api_routes(self):
         pass
