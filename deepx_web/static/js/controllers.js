@@ -28,30 +28,18 @@ app.controller('BeermindController', function ($scope, $http) {
 
   $scope.data = {
     rating: 5.0,
-    ratingTemperature: 0.7,
     category: "Fruit / Vegetable Beer",
-    categoryTemperature: 0.7
+    temperature: 0.7
   }
   $scope.reviewText = "Press 'Generate' to create a review!"
-  $scope.generateCategory = function() {
+  $scope.generate = function() {
     $http({
-      url: "/api/beermind/generate_category",
+      url: "/api/beermind/generate",
       method: "GET",
       params: {
         category: $scope.data.category,
-        temperature: $scope.data.categoryTemperature
-      }
-    }).then(function(result) {
-      $scope.reviewText = result.data.results;
-    });
-  }
-  $scope.generateRating = function() {
-    $http({
-      url: "/api/beermind/generate_rating",
-      method: "GET",
-      params: {
         rating: $scope.data.rating,
-        temperature: $scope.data.ratingTemperature
+        temperature: $scope.data.categoryTemperature
       }
     }).then(function(result) {
       $scope.reviewText = result.data.results;

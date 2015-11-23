@@ -1,3 +1,4 @@
+import random
 from path import Path
 from util import jsonp
 from flask import Flask, jsonify, redirect
@@ -44,33 +45,19 @@ class Server(object):
     def initialize_beermind(self):
 
         @jsonp
-        @self.app.route('/api/beermind/generate_rating')
+        @self.app.route('/api/beermind/generate')
         @use_args({
-            'rating': fields.Float(required=True),
+            'rating': fields.Float(missing=-1),
+            'category': fields.Str(missing=None),
             'temperature': fields.Float(missing=0.5),
         })
-        def generate_rating(args):
-            rating = args['rating']
+        def generate(args):
+            category = random.choice(self.beermind.cat_encoding.backward_mapping) if not args['category'] else args['category']
+            rating = random.uniform(1, 5) if args['rating'] == -1 else args['rating']
+
             rating = max(rating, 0)
             rating = min(rating, 10)
-            results = self.beermind.generate_rating(rating, 2000, temperature=args['temperature'])
-            results = results.split("<EOS>")[0]
-            return jsonify({
-                'results': results
-            })
-
-        @jsonp
-        @self.app.route('/api/beermind/generate_category')
-        @use_args({
-            'category': fields.Str(required=True),
-            'temperature': fields.Float(missing=0.5),
-        })
-        def generate_category(args):
-            if args['category'] not in self.beermind.cat_encoding.backward_mapping:
-                return jsonify({
-                    'results': ""
-                })
-            results = self.beermind.generate_category(args['category'], 2000, temperature=args['temperature'])
+            results = self.beermind.generate(category, rating, 2000, temperature=args['temperature'])
             results = results.split("<EOS>")[0]
             return jsonify({
                 'results': results
