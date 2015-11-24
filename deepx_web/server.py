@@ -1,3 +1,7 @@
+import tornado
+from tornado.wsgi import WSGIContainer
+from tornado.httpserver import HTTPServer
+from tornado.ioloop import IOLoop
 import random
 from path import Path
 from util import jsonp
@@ -5,6 +9,8 @@ from flask import Flask, jsonify, redirect
 from beermind import Beermind
 from webargs import fields
 from webargs.flaskparser import use_args
+
+tornado.log.enable_pretty_logging()
 
 class Server(object):
 
@@ -21,8 +27,9 @@ class Server(object):
 
 
     def listen(self):
-        self.app.run(host=self.host,
-                        port=self.port)
+        http_server = HTTPServer(WSGIContainer(self.app))
+        http_server.listen(self.port)
+        IOLoop.instance().start()
 
     def initialize(self):
         self.initialize_static_routes()

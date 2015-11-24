@@ -29,7 +29,7 @@ app.controller('BeermindController', function ($scope, $http) {
   $scope.data = {
     rating: 5.0,
     category: "Fruit / Vegetable Beer",
-    temperature: 0.7
+    temperature: 0.4
   }
   $scope.reviewText = "Press 'Generate' to create a review!"
   $scope.generate = function() {
