@@ -30,7 +30,7 @@
     <div class='row'>
       <div class='col-md-12 col-xs-12'>
         <div class='paper-container' ng-repeat='paper in papers'>
-          <a href='{{paper.link}}'>{{paper.name}}</a>
+          <a analytics-on="click" analytics-event="paper_{{paper.short}}_click" href='{{paper.link}}'>{{paper.name}}</a>
           <div>{{paper.authors}}</div>
           <div>{{paper.other}}</div>
         </div>
