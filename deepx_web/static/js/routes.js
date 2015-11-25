@@ -20,6 +20,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: '/templates/beermind.html',
       controller: 'BeermindController'
     }).
+    state('home.about', {
+      url: "/about",
+      templateUrl: '/templates/about.html',
+      controller: 'AboutController'
+    }).
+    state('home.software', {
+      url: "/software",
+      templateUrl: '/templates/software.html',
+      controller: 'SoftwareController'
+    }).
     state('home.papers', {
       url: "/papers",
       templateUrl: '/templates/papers.html',

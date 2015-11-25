@@ -54,6 +54,24 @@ app.controller('SplashController', function() {
 app.controller('PapersController', function ($scope, $window) {
 });
 
+app.controller('AboutController', function ($scope, $window) {
+});
+
+app.controller('SoftwareController', function ($scope, $window) {
+  $scope.software = [
+    {
+        'name': 'deepx',
+        'link': 'http://www.github.com/sharadmv/deepx',
+        'description': 'A general purpose deep learning library that we use to train LSTMs and feed-forward networks.'
+    },
+    {
+        'name': 'theanify',
+        'link': 'http://www.github.com/sharadmv/theanify',
+        'description': 'A decorator that allows you to naturally use theano in object-oriented code.'
+    }
+  ]
+});
+
 app.controller('HomeController', function($scope, $window) {
   $scope.projects = [
     {
