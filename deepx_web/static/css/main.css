@@ -1,4 +1,7 @@
-html, body { height: 100%; width: 100%; margin: 0;  }.
+html, body { 
+  font-family: "Maven Pro";
+  height: 100%; width: 100%; margin: 0;  
+}.
 
 .height-max {
   height: 100%;
@@ -49,7 +52,6 @@ html, body { height: 100%; width: 100%; margin: 0;  }.
   width: 150px;
   text-align: center;
   position: absolute;
-  font-family: "Maven Pro";
   text-align: center;
   font-size: 30px;
   color: white;
@@ -65,7 +67,7 @@ html, body { height: 100%; width: 100%; margin: 0;  }.
   /*border-radius: 10px;*/
 }
 .carousel {
-   height: 100vh;
+  height: 100vh;
 }
 
 .carousel-control {
@@ -73,7 +75,7 @@ html, body { height: 100%; width: 100%; margin: 0;  }.
 }
 
 .deepx-title {
-   font-size: 100px;
+  font-size: 100px;
 }
 
 .deepx-subtitle {
@@ -94,7 +96,7 @@ html, body { height: 100%; width: 100%; margin: 0;  }.
 }
 
 .navbar-brand {
-   font-size: 24px !important;
+  font-size: 24px !important;
 }
 
 .navbar-inverse {
@@ -113,8 +115,11 @@ html, body { height: 100%; width: 100%; margin: 0;  }.
 }
 
 .home-container {
+  padding-top: 50px;
+  min-height: 100%;
 }
 .home-content {
+  min-height: 400px;
   padding: 10px 20px 20px 20px;
   background-color:rgba(0, 0, 0, 0.8);
   font-size: 18px;
@@ -123,12 +128,12 @@ html, body { height: 100%; width: 100%; margin: 0;  }.
   font-family: "Maven Pro";
 }
 .home-banner {
-   text-align: center;
-   font-size: 80px;
+  text-align: center;
+  font-size: 80px;
 }
 
 .tab-content {
-   margin-top: 10px;
+  margin-top: 10px;
 }
 
 .review-text-container {
@@ -141,7 +146,7 @@ html, body { height: 100%; width: 100%; margin: 0;  }.
 }
 
 .generate-button {
-   width: 100%;
+  width: 100%;
 }
 
 .paper-container {
@@ -163,9 +168,20 @@ html, body { height: 100%; width: 100%; margin: 0;  }.
 }
 
 a {
-  color: rgb(91, 205, 243) !important
+  color: rgb(110, 206, 255) !important;
 }
 
 a:hover {
-  color: rgb(91, 205, 243) !important
+  color: rgb(150, 229, 255) !important;
+}
+
+.email-footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+  /*background-color: rgba(160, 160, 160, 0.3);*/
+  padding-top: 8px;
+  font-family: "Maven Pro";
+  font-size: 18px;
 }
