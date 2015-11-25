@@ -4,7 +4,7 @@
   </div>
   <div class='col-md-12 col-xs-12'>
     <div class='software-container' ng-repeat='sw in software'>
-      <a class='software-link' href='{{sw.link}}'>{{sw.name}}</a>
+      <a analytics-on="click" analytics-event="software_{{sw.name}}_click" class='software-link' href='{{sw.link}}'>{{sw.name}}</a>
       <div>{{sw.description}}</div>
     </div>
   </div>
