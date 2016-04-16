@@ -20,4 +20,5 @@ def main():
                     args.model_dir,
                     args.data_dir)
     server.initialize()
+    logging.info("Server running...")
     server.listen()

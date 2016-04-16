@@ -77,7 +77,7 @@ class Server(object):
         })
         def category_probability(args):
             review = args['review']
-            results = self.beermind.log_probability()
+            results = self.beermind.category_probability(review)
             return jsonify({
                 'results': results
             })

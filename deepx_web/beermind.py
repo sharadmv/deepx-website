@@ -2,9 +2,10 @@ import numpy as np
 import logging
 import cPickle as pickle
 
-from deepx.dataset import OneHotEncoding, IdentityEncoding
-from deepx.dataset import SingletonSequence, CharacterSequence, NumberSequence
+from dataset import OneHotEncoding, IdentityEncoding
+from dataset import SingletonSequence, CharacterSequence, NumberSequence
 from deepx.sequence import CharacterRNN
+from scipy.misc import logsumexp
 
 class Beermind(object):
 
@@ -87,10 +88,21 @@ class Beermind(object):
         return str(NumberSequence(results.argmax(axis=1)).decode(self.top_encoding))
 
     def category_probability(self, review):
-        num_review = CharacterSequence(review).encode(self.cat_encoding).seq.ravel()
+        num_review = CharacterSequence(review).encode(self.top_encoding).seq.ravel()
         Xs = num_review[:-1]
-        idx = num_review[1:]
-        return str(NumberSequence(results.argmax(axis=1)).decode(self.top_encoding))
+        idx = num_review[1:][:, None]
+        X = np.tile(np.eye(len(self.top_encoding))[Xs, None], (1, len(self.cat_encoding), 1))
+        S = X.shape[0]
+        cats = np.tile(np.eye(len(self.cat_encoding))[None], (S, 1, 1))
+        X, cats = X.astype(np.float32), cats.astype(np.float32)
+        X = np.concatenate([X, cats], -1)
+        result = self.catnet.log_probability(X, idx)
+        denom = logsumexp(result, axis=1)
+        probs = np.exp(result - denom[:, None])
+        data = {}
+        for i, cat in enumerate(self.cat_encoding.backward_mapping):
+            data[cat] = probs[:, i].tolist()
+        return data
 
     def users(self):
         return self.user_encoding.backward_mapping
