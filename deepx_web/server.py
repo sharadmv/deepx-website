@@ -69,3 +69,46 @@ class Server(object):
             return jsonify({
                 'results': results
             })
+
+        @jsonp
+        @self.app.route('/api/beermind/category_probability')
+        @use_args({
+            'review': fields.Str(missing=None),
+        })
+        def category_probability(args):
+            review = args['review']
+            results = self.beermind.log_probability()
+            return jsonify({
+                'results': results
+            })
+
+        @jsonp
+        @self.app.route('/api/beermind/users')
+        def users():
+            return jsonify({
+                'results': self.beermind.users()
+            })
+
+        @jsonp
+        @self.app.route('/api/beermind/items')
+        def items():
+            return jsonify({
+                'results': self.beermind.items()
+            })
+
+        @jsonp
+        @self.app.route('/api/beermind/generate_useritemnet')
+        @use_args({
+            'user': fields.Str(missing=None),
+            'item': fields.Str(missing=None),
+            'temperature': fields.Float(missing=0.5),
+        })
+        def generate_useritemnet(args):
+            user = args['user']
+            item = args['item']
+
+            results = self.beermind.generate_useritemnet(user, item, 2000, temperature=args['temperature'])
+            results = results.split("<EOS>")[0]
+            return jsonify({
+                'results': results
+            })
