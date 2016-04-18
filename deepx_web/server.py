@@ -70,11 +70,11 @@ class Server(object):
                 'results': results
             })
 
-        @jsonp
         @self.app.route('/api/beermind/category_probability')
         @use_args({
             'review': fields.Str(missing=None),
         })
+        @jsonp
         def category_probability(args):
             review = args['review']
             results = self.beermind.category_probability(review)
