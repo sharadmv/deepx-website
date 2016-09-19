@@ -84,18 +84,39 @@ app.controller('HomeController', function($scope, $window) {
 
   $scope.papers = [
     {
+        name: 'The Mythos of Model Interpretability',
+        short: 'clinical',
+        link: 'https://arxiv.org/abs/1606.03490',
+        authors: 'Zachary C. Lipton',
+        other: 'ICML Workshop on Human Interpretability of Machine Learning (WHI) 2016',
+    },
+    {
+        name: 'Directly Modeling Missing Data in Sequences with RNNs: Improved Classification of Clinical Time Series',
+        short: 'clinical',
+        link: 'https://arxiv.org/abs/1606.04130',
+        authors: 'Zachary C. Lipton, David C. Kale, Randall Wetzel',
+        other: 'Machine Learning for Health Care (MLHC) 2016 / JMLR',
+    },
+    {
+        name: 'Context Matters: Refining Object Detection in Video with Recurrent Neural Networks',
+        short: 'context',
+        link: 'http://arxiv.org/abs/1607.04648',
+        authors: 'Subarna Tripathi, Zachary C. Lipton, Serge Belongie, Truong Nguyen',
+        other: 'British Machine Vision Converence (BMVC) 2016',
+    },
+    {
         name: 'Capturing Meaning in Product Reviews with Character-Level Generative Models',
         short: 'beermind',
         link: 'http://arxiv.org/abs/1511.03683',
         authors: 'Zachary C. Lipton, Sharad Vikram, Julian McAuley',
-        other: 'Submitted to ICLR 2016 (arXiv 2015)',
+        other: '',
     },
     {
         name: 'Learning to Diagnose with LSTM Recurrent Neural Networks',
         short: 'diagnose',
         link: 'http://arxiv.org/abs/1511.03677',
         authors: 'Zachary C. Lipton, David C. Kale, Charles Elkan, Randall Wetzell',
-        other: 'Submitted to ICLR 2016 (arXiv 2015)',
-    }
+        other: 'ICLR 2016',
+    },
   ]
 });
