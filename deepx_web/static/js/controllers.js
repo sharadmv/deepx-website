@@ -39,7 +39,7 @@ app.controller('BeermindController', function ($scope, $http) {
       params: {
         category: $scope.data.category,
         rating: $scope.data.rating,
-        temperature: $scope.data.categoryTemperature
+        temperature: $scope.data.temperature
       }
     }).then(function(result) {
       $scope.reviewText = result.data.results;
