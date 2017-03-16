@@ -7,6 +7,7 @@ import os
 from path import Path
 from util import jsonp
 from flask import Flask, jsonify, redirect, request, flash, url_for, flash, render_template, send_file
+import sqlite3 as sql
 from webargs import fields
 from webargs.flaskparser import use_args
 from werkzeug.utils import secure_filename
@@ -17,11 +18,12 @@ tornado.log.enable_pretty_logging()
 
 class Server(object):
 
-    def __init__(self, host, port, model_dir, data_dir, run_beermind=True, ddc_rpc_port=13337, ddc_audio_upload_dir=None):
+    def __init__(self, host, port, model_dir, data_dir, db_fp, run_beermind=True, ddc_rpc_port=13337, ddc_audio_upload_dir=None):
         self.host = host
         self.port = port
         self.model_dir = Path(model_dir)
         self.data_dir = Path(data_dir)
+        self.db_fp = db_fp
 
         self.app = Flask(__name__, static_url_path='', static_folder='static/')
         self.app.secret_key = FLASK_SECRET_KEY
@@ -131,35 +133,29 @@ class Server(object):
     _DDC_DIFFICULTIES = ['Beginner', 'Easy', 'Medium', 'Hard', 'Challenge']
     def initialize_ddc(self):
         @self.app.route('/api/ddc/choreograph', methods=['POST'])
-        def choreograph():
-            if request.content_length > 8 * 1024 * 1024:
-                flash('Audio file too large')
+        def ddc_choreograph():
+            ip = request.remote_addr
+            if request.content_length > 16 * 1024 * 1024:
+                flash('Audio file too large', 'choreograph')
                 return redirect(url_for('ddc'))
 
-            validate = True
-            if 'audio_file' not in request.files:
-                flash('Audio file required')
-                validate = False
-            if 'diff_coarse' not in request.form or request.form['diff_coarse'] not in self._DDC_DIFFICULTIES:
-                flash('Difficulty required')
-                validate = False
-            if not validate:
+            uploaded_file = request.files.get('audio_file')
+            if not uploaded_file:
+                flash('Audio file required', 'choreograph')
                 return redirect(url_for('ddc'))
 
-            uploaded_file = request.files['audio_file']
-            if uploaded_file.filename == '':
-                flash('No file selected')
+            song_artist = request.form.get('song_artist', '')[:1024]
+            song_title = request.form.get('song_title', '')[:1024]
+
+            diff_coarse = request.form.get('diff_coarse')
+            if diff_coarse not in self._DDC_DIFFICULTIES:
+                flash('Difficulty required', 'choreograph')
                 return redirect(url_for('ddc'))
-
-            song_artist = request.form.get('song_artist', '')
-            song_title = request.form.get('song_title', '')
-
-            diff_coarse = request.form['diff_coarse']
 
             allowed_file = lambda filename: '.' in filename and filename.rsplit('.', 1)[1].lower() in self.app.config['DDC_ALLOWED_EXTENSIONS']
 
-            if uploaded_file and allowed_file(uploaded_file.filename):
-                filename = secure_filename(uploaded_file.filename)
+            if allowed_file(uploaded_file.filename):
+                filename = secure_filename(uploaded_file.filename)[:1024]
                 audio_fp = os.path.join(self.app.config['DDC_AUDIO_FILES_DIR'], filename)
                 uploaded_file.save(audio_fp)
 
@@ -167,7 +163,51 @@ class Server(object):
                     zip_fp = self.ddc.create_chart(song_artist, song_title, audio_fp, [diff_coarse])
                 except Exception as e:
                     msg = e.faultString.split(':', 1)[1]
-                    flash(msg)
+                    flash(msg, 'choreograph')
                     return redirect(url_for('ddc'))
 
+                uuid = os.path.splitext(os.path.split(zip_fp)[1])[0]
+                with sql.connect(self.db_fp) as db_con:
+                  db_cur = db_con.cursor()
+                  db_cur.execute("INSERT INTO ddc_choreograph (ip,uuid,song_artist,song_title,diff_coarse,filename) VALUES (?,?,?,?,?,?)", (ip, uuid, song_artist, song_title, diff_coarse, filename))
+                  db_con.commit()
+
                 return send_file(zip_fp, as_attachment=True)
+            else:
+                flash('Invalid file type', 'choreograph')
+                return redirect(url_for('ddc'))
+
+        @self.app.route('/api/ddc/feedback', methods=['POST'])
+        def ddc_feedback():
+            ip = request.remote_addr
+            email = request.form.get('email')
+            satisfaction = request.form.get('satisfaction', -1)
+            comments = request.form.get('comments')
+            if not (email or satisfaction or comments):
+                flash('No feedback provided', 'feedback')
+                return redirect(url_for('ddc'))
+
+            if len(email) > 1024:
+                flash('Email too long', 'feedback')
+                return redirect(url_for('ddc'))
+
+            try:
+                satisfaction = int(satisfaction)
+            except:
+                flash('Invalid satisfaction', 'feedback')
+                return redirect(url_for('ddc'))
+            if satisfaction not in [-1] + range(1,6):
+                flash('Invalid satisfaction', 'feedback')
+                return redirect(url_for('ddc'))
+
+            if len(comments) > 8192:
+                flash('Comments too long', 'feedback')
+                return redirect(url_for('ddc'))
+
+            with sql.connect(self.db_fp) as db_con:
+              db_cur = db_con.cursor()
+              db_cur.execute("INSERT INTO ddc_feedback (ip,email,satisfaction,comments) VALUES (?,?,?,?)", (ip, email, satisfaction, comments))
+              db_con.commit()
+
+            flash('Thanks for your feedback!', 'feedback')
+            return redirect(url_for('ddc'))
