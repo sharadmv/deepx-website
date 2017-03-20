@@ -181,11 +181,14 @@ class Server(object):
         def ddc_feedback():
             ip = request.remote_addr
             email = request.form.get('email')
-            satisfaction = request.form.get('satisfaction', -1)
+            satisfaction = request.form.get('satisfaction')
             comments = request.form.get('comments')
             if not (email or satisfaction or comments):
                 flash('No feedback provided', 'feedback')
                 return redirect(url_for('ddc'))
+
+            if satisfaction is None:
+                satisfaction = -1
 
             if len(email) > 1024:
                 flash('Email too long', 'feedback')
@@ -194,10 +197,10 @@ class Server(object):
             try:
                 satisfaction = int(satisfaction)
             except:
-                flash('Invalid satisfaction', 'feedback')
+                flash('Invalid satisfaction value', 'feedback')
                 return redirect(url_for('ddc'))
             if satisfaction not in [-1] + range(1,6):
-                flash('Invalid satisfaction', 'feedback')
+                flash('Invalid satisfaction value', 'feedback')
                 return redirect(url_for('ddc'))
 
             if len(comments) > 8192:
