@@ -79,6 +79,11 @@ app.controller('HomeController', function($scope, $window) {
       href: "home.beermind",
       backgroundImage: "/img/beer.jpg"
     },
+    {
+      name: "DDC",
+      href_absolute: "/ddc",
+      backgroundImage: "/img/ddc.jpg"
+    },
   ];
 
 
