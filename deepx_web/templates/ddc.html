@@ -78,7 +78,7 @@
 
 <h2>FAQ</h2>
 <h3>How does this work?</h3>
-<p>Dance Dance Convolution (DDC) uses two neural networks to create step charts. One network predicts timing of the steps from the audio and another network creates sequences of arrows from the timings. You can read more details in <a href="https://openreview.net/pdf?id=HyzsgBEtg">the paper</a> (<a href="https://openreview.net/pdf?id=HyzsgBEtg">pdf</a>).</p>
+<p>Dance Dance Convolution (DDC) uses two neural networks to create step charts. One network predicts timing of the steps from the audio and another network creates sequences of arrows from the timings. You can read more details in <a href="https://arxiv.org/abs/1703.06891">the paper</a> (<a href="https://arxiv.org/pdf/1703.06891.pdf">pdf</a>).</p>
 
 <h3>Why is everything at 125BPM?</h3>
 The network that predicts step timings has no concept of rhythm or tempo. It simply answers the following question 100 times a second: should there be a step here? We map these to step charts by creating measures with 192 steps at 125BPM. We will release a script soon allowing you to manually set the tempo/offset of a chart to clean things up a little. For now, turn off colored note skins to avoid confusion.
