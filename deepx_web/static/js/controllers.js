@@ -108,13 +108,15 @@ app.controller('HomeController', function($scope, $window) {
         name: 'Semantically Decomposing the Latent Spaces of Generative Adversarial Networks',
         short: 'sdgan',
         link: 'https://arxiv.org/abs/1705.07904',
-        authors: 'Chris Donahue, Zachary C. Lipton, Akshay Balsubramani, Julian McAuley'
+        authors: 'Chris Donahue, Zachary C. Lipton, Akshay Balsubramani, Julian McAuley',
+        other: 'ICLR 2018',
     },
     {
         name: 'Dance Dance Convolution',
         short: 'ddc',
         link: 'https://arxiv.org/abs/1703.06891',
-        authors: 'Chris Donahue, Zachary C. Lipton, Julian McAuley'
+        authors: 'Chris Donahue, Zachary C. Lipton, Julian McAuley',
+        other: 'ICML 2017',
     },
     {
         name: 'The Mythos of Model Interpretability',
