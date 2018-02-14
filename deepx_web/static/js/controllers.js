@@ -84,10 +84,32 @@ app.controller('HomeController', function($scope, $window) {
       href_absolute: "/ddc",
       backgroundImage: "/img/ddc.jpg"
     },
+    {
+      name: "SDGAN",
+      href_absolute: "https://chrisdonahue.github.io/sdgan/",
+      backgroundImage: "/img/sdgan.jpg"
+    },
+    {
+      name: "WaveGAN",
+      href_absolute: "http://wavegan-v1.s3-website-us-east-1.amazonaws.com",
+      backgroundImage: "/img/wavegan.jpg"
+    },
   ];
 
 
   $scope.papers = [
+    {
+        name: 'Synthesizing Audio with Generative Adversarial Networks',
+        short: 'wavegan',
+        link: 'https://arxiv.org/abs/1802.04208',
+        authors: 'Chris Donahue, Julian McAuley, Miller Puckette'
+    },
+    {
+        name: 'Semantically Decomposing the Latent Spaces of Generative Adversarial Networks',
+        short: 'sdgan',
+        link: 'https://arxiv.org/abs/1705.07904',
+        authors: 'Chris Donahue, Zachary C. Lipton, Akshay Balsubramani, Julian McAuley'
+    },
     {
         name: 'Dance Dance Convolution',
         short: 'ddc',
