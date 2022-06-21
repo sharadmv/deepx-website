@@ -3,7 +3,7 @@ itsdangerous==0.24
 Jinja2==2.8
 MarkupSafe==0.23
 marshmallow==2.2.1
-numpy==1.10.1
+numpy==1.22.0
 path.py==8.1.2
 scipy==0.16.1
 six==1.10.0
